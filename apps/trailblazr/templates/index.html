@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <title>Trailblazr</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="description" content="Hiking app that lets users find trails to hike nearby!">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Jost&display=swap" rel="stylesheet" async>
+    <link href='https://css.gg/close-o.css' rel='stylesheet' async>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'scss/theme.css' %}" async>
+    <link rel="stylesheet" href="{% static 'css/animation.css' %}" async>
+</head>
+<body>
+    <div id="hero">
+        <img src="{% static 'img/mountain.webp' %}" alt="Hero Image">
+        <div class="hero-msg text-center">
+            <h2>Explore the world!</h2>
+        </div>
+        <div class="container text-center">
+            <button type="button" class="btn btn-pastel-pink login-popup">Log In</button>
+            <button type="button" class="btn btn-outline-pastel-pink register-popup">Register</button>
+        </div>
+        <img src="{% static 'img/trailblazr-logo-typo-white.png' %}" alt="Trailblazr Logo">
+    </div>
+    <div id="login" class="hidden">
+        <div class="container close">
+            <i class="gg-close-o close-login"></i>
+        </div>
+        <div class="container">
+            <form class="form-signin" action="{% url 'login_registration:login' %}" method="post" role="form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2 class="form-signin-heading text-center">Log In</h2>
+                <div class="form-group">
+                    <label class="sr-only">Email</label>
+                    <input type="text" name="email" inputmode="email" class="form-control" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-manatee">Log In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="register" class="hidden">
+        <div class="container close">
+            <i class="gg-close-o close-register"></i>
+        </div>
+        <div class="container">
+            <form class="form-signin" action="{% url 'login_registration:register' %}" method="post" role="form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2 class="form-signin-heading text-center">Register</h2>
+                <div class="form-group">
+                    <label class="sr-only">First Name</label>
+                    <input type="text" name="first_name" class="form-control" placeholder="First Name" required>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Last Name</label>
+                    <input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Email</label>
+                    <input type="text" name="email" inputmode="email" class="form-control" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    <p style="font-size: 0.85rem; margin-left: 8px">Password must be at least 8 characters long, contain 1 lowercase and 1 uppercase character, 1 numeric character, and 1 special character (!, @, #, $, &, *)</p>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Confirm Password</label>
+                    <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-manatee">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="errors">
+        <div class="container">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger alert-dismissible text-center" role="alert">
+                        {{message}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        $(".login-popup").click(function() {
+            $("#login").removeClass("hidden");
+            $("#login").addClass("slide-in-bottom");
+        });
+
+        $(".register-popup").click(function() {
+            $("#register").removeClass("hidden");
+            $("#register").addClass("slide-in-bottom");
+        })
+
+        $(".close-login").click(function() {
+            $("#login").removeClass("slide-in-bottom");
+            $("#login").addClass("hidden");
+        });
+
+        $(".close-register").click(function() {
+            $("#register").removeClass("slide-in-bottom");
+            $("#register").addClass("hidden");
+        });
+    </script>
+</body>
+</html>

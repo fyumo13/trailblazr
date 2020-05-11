@@ -1,0 +1,259 @@
+a {
+    color: var(--dark);
+    &:hover {
+        color: var(--dark);
+    }
+}
+
+i {
+    cursor: pointer;
+}
+
+.btn-manatee, .btn-pastel-pink {
+    color: var(--light);
+    &:hover {
+        background: transparent;
+    }
+}
+
+.btn-outline-manatee:hover, .btn-outline-pastel-pink:hover {
+    color: var(--light);
+}
+
+.btn-manatee {
+    &:hover {
+        border: 1px solid var(--manatee);
+        color: var(--manatee);
+    }
+}
+
+.btn-pastel-pink {
+    &:hover {
+        border: 1px solid var(--pastel-pink);
+        color: var(--pastel-pink);
+    }
+}
+
+.close {
+    i {
+        float: right;
+        &:hover {
+            color: var(--pastel-pink);
+        }
+    }
+}
+
+.hero-msg, .message {
+    font-family: 'DM Serif Text', serif;
+    font-style: italic;     
+}
+
+#hero {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    img:first-child {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+    img:last-child {
+        z-index: 9;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -60%);
+        -webkit-transform: translate(-50%, -60%);
+        -moz-transform: translate(-50%, -60%);
+    }
+    .hero-msg {
+        color: var(--light);
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        transform: translate(-50%, -85%);
+        -webkit-transform: translate(-50%, -85%);
+        -moz-transform: translate(-50%, -85%);
+        h2 {
+            white-space: nowrap;
+        }
+    }
+    .container {
+        position: absolute;
+        z-index: 9;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -20%);
+        -webkit-transform: translate(-50%, -20%);
+        -moz-transform: translate(-50%, -20%);
+    }
+}
+
+#login, #register {
+    width: 100%;
+    bottom: 0;
+    transform: translateY(100%);
+    position: absolute;
+    background: var(--light);
+    border-radius: 16px;
+    h2 {
+        font-family: 'DM Serif Text', serif;
+        font-style: italic; 
+    }
+    p {
+        padding-top: 16px;
+    }
+    .container {
+        padding: 20px;
+    }
+    .form-control {
+        background: transparent;
+        border-radius: 8px;
+        padding: 24px;
+        border: 1px solid var(--manatee);
+        &:hover, &:focus {
+            border: 1px solid var(--pastel-pink);
+        }
+    }
+}
+
+#login {
+    z-index: 9;
+}
+
+#register {
+    z-index: 10;
+}
+
+#errors {
+    z-index: 11;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+}
+
+.hidden {
+    display: none;
+}
+
+#main {
+    width: 100vw;
+    padding-bottom: 58.313px;
+    ul {
+        padding: 16px;
+    }
+    li {
+        list-style: none;
+        padding: 16px 0;
+    }
+    .container {
+        padding: 0;
+    }
+    .card {
+        border-radius: 10px;
+    }
+    .card-title {
+        padding: 20px 20px 0;
+        margin: 0;
+    }
+}
+
+#dashboard {
+    a {
+        color: var(--dark);
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .card:hover {
+        box-shadow: 0px 2px 4px map-get($grays, '600');
+    }
+}
+
+#search {
+    .container {
+        background: var(--light);
+        border-bottom: 1px solid map-get($grays, '400');
+        form {
+            margin: 0 auto;
+            padding: 16px;
+        }
+    }
+}
+
+#results {
+    margin: 16px;
+    margin-top: 90px;
+}
+
+.message {
+    padding: 16px;
+    img {
+        width: 100%;
+        border-radius: 16px;
+        margin-top: 16px;
+    }
+}
+
+#trail {
+    iframe {
+        margin: 16px 0;
+    }
+    i {
+        margin: 0 auto;
+    }
+    #details {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        transform: translateY(100%);
+        background: var(--light);
+        border: 1px solid map-get($grays, '400');
+        border-radius: 16px;
+        box-shadow: 0 -2px 4px map-get($grays, '600');
+        padding: 24px;
+        padding-bottom: 74.313px;
+        .header {
+            margin-bottom: 16px;
+        }
+    }
+}
+
+.detail {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+.row {
+    margin-bottom: 8px;
+}
+span {
+    font-size: 0.85rem;
+    font-weight: 200;
+    opacity: 65%;
+}
+
+.navbar-custom {
+    background: #fff;
+    border-top: 1px solid map-get($grays, '400');
+    .navbar-nav {
+        flex-direction: row;
+        margin: 0 auto;
+        .nav-link {
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #login, #register {
+        .container {
+            width: 50%;
+        }
+    }
+}

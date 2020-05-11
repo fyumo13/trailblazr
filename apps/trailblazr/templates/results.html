@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <title>Trailblazr</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="description" content="Hiking app that lets users find trails to hike nearby!">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Jost&display=swap" rel="stylesheet" async>
+    <link href='https://css.gg/home.css' rel='stylesheet' async>
+    <link href='https://css.gg/search.css' rel='stylesheet' async>
+    <link href='https://css.gg/log-out.css' rel='stylesheet' async>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'scss/theme.css' %}" async>
+</head>
+<body>
+    <div id="main">
+        <div id="search">
+            <div class="container fixed-top">
+                <form class="form-inline d-flex justfy-content-center" action="{% url 'trailblazr:search' %}" method="get">
+                    <a class="nav-link" href="{% url 'trailblazr:search_bar' %}"><i class="gg-search"></i></a>
+                    <input class="search-bar form-control w-75" type="text" name="search" placeholder="Search" aria-labelledby="Search">
+                </form>
+            </div>
+        </div>
+        <div id="results">
+            <div class="container">
+                {% if results %}
+                    <ul>
+                        {% for result in results %}
+                            <li>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h3>{{ result.name }}</h3>
+                                                <p>
+                                                    <svg width="16px" height="16px" viewBox="0 0 60 60">
+                                                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <g id="icon" transform="translate(-9.000000, -3.000000)" fill="#000000" stroke="#000000">
+                                                                <path d="M32,60 C17.3333333,43.3637967 10,31.3637967 10,24 C10,12.954305 19.8497355,4 32,4 C44.1502645,4 54,12.954305 54,24 C54,31.3637967 46.6666667,43.3637967 32,60 Z M32,34 C37.5228475,34 42,29.5228475 42,24 C42,18.4771525 37.5228475,14 32,14 C26.4771525,14 22,18.4771525 22,24 C22,29.5228475 26.4771525,34 32,34 Z" id="Combined-Shape"></path>
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+                                                    {{ result.location }}
+                                                </p>
+                                            </div>
+                                            {% if result.id not in saved_trails %}
+                                                <div class="float-right mr-2">
+                                                    <a class="btn btn-pastel-pink" href="{% url 'trailblazr:add_trail' id=result.id %}">Save</a>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <p class="detail">{{ result.length }} mi. </p>
+                                                <span>Length</span>
+                                            </div>
+                                            <div class="col-6">
+                                                {% if result.difficulty == 'green' %}
+                                                    <p class="detail">Beginner</p>
+                                                {% elif result.difficulty == 'blue' %}
+                                                    <p class="detail">Intermediate</p>
+                                                {% elif result.difficulty == 'black' %}
+                                                    <p class="detail">Advanced</p>
+                                                {% endif %}
+                                                <span>Difficulty</span>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <div class="message">
+                        <h2 class="text-center">Time to start exploring! Find popular trails near you!</h2>
+                        <img src="{% static 'img/mountain2.webp' %}" alt="Mountain Image">
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-custom fixed-bottom" id="navbar">
+        <ul class="navbar-nav">
+            <div class="row">
+                <div class="col-4">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'trailblazr:dashboard' %}"><i class="gg-home"></i> </a>
+                    </li>
+                </div>
+                <div class="col-4">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'trailblazr:search_bar' %}"><i class="gg-search"></i></a>
+                    </li>
+                </div>
+                <div class="col-4">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login_registration:logout' %}"><i class="gg-log-out"></i></a>
+                    </li>
+                </div>
+            </div>
+        </ul> 
+    </nav>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

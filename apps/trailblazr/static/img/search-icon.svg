@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#FFFFFF" fill="#000000" transform="translate(49.081475, 49.081475) rotate(-45.000000) translate(-49.081475, -49.081475) " x="46.5814755" y="37.0814755" width="5" height="24"></rect>
+        <circle id="Oval" stroke="#000000" stroke-width="2" cx="25" cy="25" r="21"></circle>
+    </g>
+</svg>

@@ -1,0 +1,1 @@
+# default_app_config = 'apps.login_registration.apps.LoginRegistrationConfig'
